@@ -12,8 +12,10 @@ class Teacher extends Person {
     this.courses = [...this.courses, courseName]
   }
 
-  gradeScore() {
-    // TODO: implement functionality to grade score
+  gradeScore(student, course, score) {
+    if (!this.courses.includes(course)) throw new Error("Course not assigned")
+
+    return student.scoreCourse(course, score)
   }
 }
 
