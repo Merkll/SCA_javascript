@@ -82,4 +82,3 @@ class ATMInterface {
 }
 
 export default new ATMInterface()
-
