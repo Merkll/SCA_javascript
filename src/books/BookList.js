@@ -3,13 +3,17 @@ class BookList {
   bookList = [];
 
   add(book) {
-    this.bookList = this.bookList.push(book)
+    this.bookList.push(book)
   }
 
   get bookToRead() {
-    if (!this.currentBook) this.currentBook = 0;
+    if (this.currentBook === null) return 0;
 
-    return this.currentBook
+    const nextBook = this.currentBook + 1
+
+    if (nextBook > this.numberOfBooks - 1) return this.currentBook
+
+    return nextBook
   }
 
   get numberOfBooks() {
@@ -32,6 +36,12 @@ class BookList {
 
   addFromTitle(bookTitle, author, genre) {
     // TODO: implement functionality
+  }
+
+  readBook() {
+    const currentBook = this.bookList[this.currentBook];
+
+    if (!currentBook || currentBook.read) this.currentBook = this.bookToRead
   }
 
   finishCurrentBook() {
